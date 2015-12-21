@@ -1,9 +1,5 @@
 jQuery(document).ready( function ($) {
 
-	console.log(nona.age_to_restrict);
-	console.log(nona.time_to_remember);
-	console.log(nona.needs_verification);
-
 	function initialize_age_gate() {
 		$(".container").addClass('nona-age-gate');
 
