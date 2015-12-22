@@ -124,6 +124,9 @@
   #nona_verify:hover {
     text-decoration: none; }
 
+#nona-overlay-wrap.nona-age-gate-hide {
+  display: none; }
+
 #nona-overlay-wrap {
   position: fixed;
   height: 100%;

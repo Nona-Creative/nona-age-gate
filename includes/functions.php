@@ -63,14 +63,47 @@
 		if ( wp_verify_nonce( $nonce, 'age-verified' ) )
 			$return = false;
 
-		// Or, if there is a valid cookie let 'em through
-		if ( isset( $_COOKIE['age-verified'] ) ) {
+		if ( isset( $_POST['cookie_verified'] ) && $_POST['cookie_verified'] == 'verified' ) {
+				$return = false;
+				// echo $_POST['cookie_verified'];
+		}
+
+		if( isset($_COOKIE['age-verified']) && $_COOKIE['age-verified'] == 'verified'){
 				$return = false;
 		}
 
 		return (bool) $return;
+
 	}
 
 	// Call Ajax
-	add_action( 'wp_ajax_nona_needs_verification', 'nona_needs_verification'); // ajax for logged in users
-	add_action( 'wp_ajax_nopriv_nona_needs_verification', 'nona_needs_verification' ); // ajax for not logged in users
+	add_action( 'wp_ajax_nona_ajax_age', 'nona_needs_verification_ajax'); // ajax for logged in users
+	add_action( 'wp_ajax_nopriv_nona_ajax_age', 'nona_needs_verification_ajax' ); // ajax for not logged in users
+
+	function nona_needs_verification_ajax() {
+
+		wp_send_json( nona_needs_verification() );
+		die();
+
+	}
+
+	// function nona_has_cookie_set() {
+	// 	$has_cookie = false;
+	// 	// Or, if there is a valid cookie let 'em through
+	// 	if ( isset( $_POST['cookie_verified'] ) ) {
+	// 			$has_cookie = true;
+	// 			//echo $_POST['cookie_verified'];
+	// 	}
+	// 	wp_send_json( $has_cookie );
+	// 	die();
+	// }
+
+	// if (nona_has_cookie_set() == true) {
+	// 	echo '<div style="display: block;">Has Cookie Set!</div>';
+	// } else {
+	// 	echo '<div style="display: block;">Has No Cookie Set!</div>';
+	// }
+
+	// // Call Ajax
+	// add_action( 'wp_ajax_nona_ajax', 'nona_has_cookie_set'); // ajax for logged in users
+	// add_action( 'wp_ajax_nopriv_nona_ajax', 'nona_has_cookie_set' ); // ajax for not logged in users

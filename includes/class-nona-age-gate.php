@@ -166,11 +166,10 @@ class Nona_Age_Gate {
 
 		// WordPress Localise Script for use in JS
 		$nona_localized_data = array(
-		    'ajax_url'				=> admin_url( 'admin-ajax.php' ),
+		    'ajaxurl'				=> admin_url( 'admin-ajax.php' ),
 		    'age_to_restrict'		=> get_option('nona_age_to_restrict'),
 		    'needs_verification'	=> nona_needs_verification(),
-		    'time_to_remember'		=> get_option('nona_time_to_remember'),
-		    'pleaseWaitLabel' 		=> __( 'Please wait...', 'default' )
+		    'time_to_remember'		=> get_option('nona_time_to_remember')
 		);
 		wp_localize_script( $this->_token . '-frontend', 'nona', $nona_localized_data );
 
@@ -294,7 +293,7 @@ class Nona_Age_Gate {
 		// Disable page caching by W3 Total Cache.
 		define( 'DONOTCACHEPAGE', true ); ?>
 
-			<div id="nona-overlay-wrap">
+			<div id="nona-overlay-wrap" class="nona-overlay-hide">
 				<div id="nona-overlay-inner">
 					<div id="nona-overlay">
 
@@ -338,7 +337,7 @@ class Nona_Age_Gate {
 	 */
 	public function success_redirect() {
 
-		if ( empty( $_POST ) || ! wp_verify_nonce( $_POST['nona-nonce'], 'verify-age' ) ) {
+		if ( empty( $_POST ) || !(isset($_POST['nona-nonce']) && wp_verify_nonce( $_POST['nona-nonce'], 'verify-age' ) ) ) {
 			return;
 		}
 
@@ -346,7 +345,7 @@ class Nona_Age_Gate {
 
 		$is_verified  = false;
 		// Check if a cookie has been set
-		if ( isset($_COOKIE["age-verified"]) == 'verified' ) {
+		if ( isset($_POST["cookie-verified"]) ) {
 			$is_verified = true;
 		}
 

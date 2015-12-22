@@ -206,6 +206,12 @@ $subscribeGoldA   : rgba(159, 133, 81, 0.40);
 }
 
 #nona-overlay-wrap {
+	&.nona-age-gate-hide {
+		display: none;
+	}
+}
+
+#nona-overlay-wrap {
 	position: fixed;
 	height: 100%;
 	width: 100%;

@@ -2,6 +2,8 @@ jQuery(document).ready( function ($) {
 
 	function initialize_age_gate() {
 		$(".container").addClass('nona-age-gate');
+		$("#nona-overlay-wrap").addClass('nona-age-gate-show');
+
 
 		$('#agegate-form').mobiscroll().date({
 			theme: 'default',
@@ -15,9 +17,17 @@ jQuery(document).ready( function ($) {
 			height: "30"
 		});
 
+		jQuery.ajax({
+				url : nona.ajax_url,
+				type : 'post',
+					data : {
+						action : 'nona_ajax'
+					},
+				});
+
 		$("#nona_verify").on("click", function(e) {
 		e.preventDefault();
-
+					// This is what we are sending the server
 			var old_enough = false;
 
 			if (is_visitor_old_enough()) {
@@ -28,12 +38,16 @@ jQuery(document).ready( function ($) {
 				if ( cookie.enabled() ) {
 				   cookie.set( 'age-verified', 'verified', {
 					   expires: 7,
+					   path: '/',
 					   secure: false
 					});
 				}
+				$("#nona-overlay-wrap").removeClass('nona-age-gate-show');
+				$("#nona-overlay-wrap").addClass('nona-age-gate-hide');
 			}
 
 			$("#nona_verify_form").submit();
+
 		});
 
 		jQuery("#agegate-wrap").fadeIn();
@@ -60,9 +74,45 @@ jQuery(document).ready( function ($) {
 	}
 
 	// INIT AGE GATE
-	if(cookie.get('age-verified') !== 'verified') {
+	if(!cookie.get('age-verified')) {
 		initialize_age_gate();
+	} else {
+		// console.log(cookie.get('age-verified'));
+		// console.log('['+nona.ajaxurl+']');
+		$("#nona-overlay-wrap").addClass('nona-age-gate-hide');
+		jQuery.ajax( {
+				url: nona.ajaxurl, //key variable that is set in the php enqueue
+				type: 'POST',
+				data: {
+			            'action':'nona_ajax_age', //action needs to match the function in the php file as well as the add_action for it
+			            'cookie_verified' : cookie.get('age-verified')
+			        },
+			    success: function(res){
+			    	console.log(res);
+			    },
+			    error: function(res){
+			    	console.log('error');
+			    	console.log(res);
+			    }
+			})
+
+			// .done(function(data, status) {
+			// //status is the http request status - 200 for all good, 404 not found e.t.c
+
+			// 	console.log('There is a cookie with value '+cookie.get('age-verified'));
+			// 	console.log("success");
+
+			// })
+			// .fail(function(data, status) {
+			// 	console.log("error");
+			// 	console.log(data);
+			// })
+			// .always(function() {
+			// 	console.log("complete");
+			// });
+
 	}
+
 
 });
 
