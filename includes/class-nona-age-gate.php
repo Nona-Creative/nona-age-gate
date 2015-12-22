@@ -168,7 +168,6 @@ class Nona_Age_Gate {
 		$nona_localized_data = array(
 		    'ajaxurl'				=> admin_url( 'admin-ajax.php' ),
 		    'age_to_restrict'		=> get_option('nona_age_to_restrict'),
-		    'needs_verification'	=> nona_needs_verification(),
 		    'time_to_remember'		=> get_option('nona_time_to_remember')
 		);
 		wp_localize_script( $this->_token . '-frontend', 'nona', $nona_localized_data );

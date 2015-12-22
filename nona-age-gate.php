@@ -3,7 +3,7 @@
  * Plugin Name: Nona Age Gate
  * Version: 1.0
  * Plugin URI: http://leogopal.com/
- * Description: This is your starter template for your next WordPress plugin.
+ * Description: Simple Age Gate Plugin to restrict a users access to the site.
  * Author: Leo Gopal, Nona Creative
  * Author URI: http://leogopal.com/
  * Requires at least: 4.0

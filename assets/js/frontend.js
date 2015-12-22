@@ -1,10 +1,11 @@
 jQuery(document).ready( function ($) {
 
 	// INIT AGE GATE
-	if( ! cookie.get('age-verified') ) {
+	if( ! cookie.get('nona-age-verified') ) {
 		initialize_age_gate();
 	}
 
+	var time_to_remember = parseInt(nona.time_to_remember);
 	function initialize_age_gate() {
 		$(".container").addClass('nona-age-gate');
 		$("#nona-overlay-wrap").removeClass('nona-age-gate-hide');
@@ -34,8 +35,9 @@ jQuery(document).ready( function ($) {
 			}
 
 			if (old_enough) {
-			   cookie.set( 'age-verified', 'verified', {
-				   expires: 7,
+			   cookie.set( 'nona-age-verified', 'verified', {
+				   expires: time_to_remember,
+				   domain: document.location.hostname,
 				   path: '/',
 				   secure: false
 				});

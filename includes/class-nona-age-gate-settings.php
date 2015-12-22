@@ -139,7 +139,7 @@ class Nona_Age_Gate_Settings {
 				array(
 					'id' 			=> 'enter_button_text',
 					'label'			=> __( 'Button Text' , 'nona-age-gate' ),
-					'description'	=> __( 'This is a standard text field.', 'nona-age-gate' ),
+					'description'	=> __( 'What do you want the button to say.', 'nona-age-gate' ),
 					'type'			=> 'text',
 					'default'		=> 'Enter',
 					'placeholder'	=> __( 'Enter', 'nona-age-gate' )
