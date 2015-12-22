@@ -7,7 +7,6 @@
 	 * @echo string
 	 */
 	function nona_verify_form() {
-
 		echo nona_get_verify_form();
 	}
 
@@ -37,7 +36,9 @@
 				<input type="hidden" name="nona_verify_m_hidden" id="nona_verify_m_hidden" value="" />
 				<input type="hidden" name="nona_verify_y_hidden" id="nona_verify_y_hidden" value="" />
 				</div>
-					<input type="submit" name="nona_verify" id="nona_verify" value="' . esc_attr( $submit_button_label ) . '" />
+
+					<a id="nona_verify" href="#">'. esc_attr( $submit_button_label ) .'</a>
+					<div id="error-too-young"></div>
 					<small>You must be over 18 to Enter</small>
 
 			</div>';
@@ -45,65 +46,3 @@
 		return apply_filters( 'nona_verify_form', $form );
 	}
 
-	/**
-	 * This is the very important function that determines if a given visitor
-	 * needs to be verified before viewing the site. You can filter this if you like.
-	 *
-	 * @since 0.1
-	 * @return bool
-	 */
-	function nona_needs_verification() {
-
-		// Assume the visitor needs to be verified
-		$return = true;
-
-		// Check that the form was at least submitted. This lets visitors through that have cookies disabled.
-		$nonce = ( isset( $_REQUEST['age-verified'] ) ) ? $_REQUEST['age-verified'] : '';
-
-		if ( wp_verify_nonce( $nonce, 'age-verified' ) )
-			$return = false;
-
-		if ( isset( $_POST['cookie_verified'] ) && $_POST['cookie_verified'] == 'verified' ) {
-				$return = false;
-				// echo $_POST['cookie_verified'];
-		}
-
-		if( isset($_COOKIE['age-verified']) && $_COOKIE['age-verified'] == 'verified'){
-				$return = false;
-		}
-
-		return (bool) $return;
-
-	}
-
-	// Call Ajax
-	add_action( 'wp_ajax_nona_ajax_age', 'nona_needs_verification_ajax'); // ajax for logged in users
-	add_action( 'wp_ajax_nopriv_nona_ajax_age', 'nona_needs_verification_ajax' ); // ajax for not logged in users
-
-	function nona_needs_verification_ajax() {
-
-		wp_send_json( nona_needs_verification() );
-		die();
-
-	}
-
-	// function nona_has_cookie_set() {
-	// 	$has_cookie = false;
-	// 	// Or, if there is a valid cookie let 'em through
-	// 	if ( isset( $_POST['cookie_verified'] ) ) {
-	// 			$has_cookie = true;
-	// 			//echo $_POST['cookie_verified'];
-	// 	}
-	// 	wp_send_json( $has_cookie );
-	// 	die();
-	// }
-
-	// if (nona_has_cookie_set() == true) {
-	// 	echo '<div style="display: block;">Has Cookie Set!</div>';
-	// } else {
-	// 	echo '<div style="display: block;">Has No Cookie Set!</div>';
-	// }
-
-	// // Call Ajax
-	// add_action( 'wp_ajax_nona_ajax', 'nona_has_cookie_set'); // ajax for logged in users
-	// add_action( 'wp_ajax_nopriv_nona_ajax', 'nona_has_cookie_set' ); // ajax for not logged in users

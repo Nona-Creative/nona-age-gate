@@ -108,7 +108,7 @@ class Nona_Age_Gate {
 		add_action( 'wp_footer', array( $this, 'verify_overlay' ), 10 );
 
 		// Success Redirect
-		add_action( 'template_redirect', array( $this, 'success_redirect' ) );
+		// add_action( 'template_redirect', array( $this, 'success_redirect' ) );
 
 		/**
 		 * Require the necessary files.
@@ -286,14 +286,10 @@ class Nona_Age_Gate {
 	 */
 	public function verify_overlay() {
 
-		if ( ! nona_needs_verification() ) {
-			return;
-		}
-
 		// Disable page caching by W3 Total Cache.
 		define( 'DONOTCACHEPAGE', true ); ?>
 
-			<div id="nona-overlay-wrap" class="nona-overlay-hide">
+			<div id="nona-overlay-wrap" class="nona-age-gate-hide">
 				<div id="nona-overlay-inner">
 					<div id="nona-overlay">
 
@@ -326,38 +322,6 @@ class Nona_Age_Gate {
 				</div>
 			</div>
 		<?php
-	}
-
-	/**
-	 * Verify the visitor if the form was submitted.
-	 *
-	 * @since 0.1.0
-	 *
-	 * @return void
-	 */
-	public function success_redirect() {
-
-		if ( empty( $_POST ) || !(isset($_POST['nona-nonce']) && wp_verify_nonce( $_POST['nona-nonce'], 'verify-age' ) ) ) {
-			return;
-		}
-
-		$redirect_url = remove_query_arg( array( 'age-verified', 'verify-error' ), wp_get_referer() );
-
-		$is_verified  = false;
-		// Check if a cookie has been set
-		if ( isset($_POST["cookie-verified"]) ) {
-			$is_verified = true;
-		}
-
-		if ( $is_verified == true ) :
-			wp_redirect( esc_url_raw( $redirect_url ) . '?age-verified=' . wp_create_nonce( 'age-verified' ) );
-			exit;
-		else :
-			wp_redirect( esc_url_raw( add_query_arg( 'verify-error', $error, $redirect_url ) ) );
-			exit;
-
-		endif;
-
 	}
 
 }

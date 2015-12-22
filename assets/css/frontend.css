@@ -9,60 +9,6 @@
 /*
   Colors
 */
-@media (min-width: 0) and (max-width: 766px) {
-  .page-template-page-agegate .container.nona-age-gate {
-    background-image: url("../img/ara-mob-tjg-agegate.jpg"); } }
-.page-template-page-agegate .container.nona-age-gate:before {
-  content: '';
-  position: absolute;
-  top: 0px;
-  left: 0px;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  /*IE8*/
-  z-index: 1; }
-.page-template-page-agegate .container.nona-age-gate .btn-wrap {
-  opacity: 0;
-  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";
-  /*IE8*/ }
-.page-template-page-agegate .container.nona-age-gate .landing-panel .logo {
-  top: 9%; }
-  @media (min-width: 767px) {
-    .page-template-page-agegate .container.nona-age-gate .landing-panel .logo {
-      top: 24%; } }
-.page-template-page-agegate .container.nona-age-gate .landing-panel.krone {
-  background-image: url("../img/ara-mob-krone-agegate.jpg"); }
-  @media (min-width: 767px) {
-    .page-template-page-agegate .container.nona-age-gate .landing-panel.krone {
-      background-image: url("../img/ara-krone-agegate.jpg"); } }
-  @media (min-width: 767px) and (max-width: 1023px) {
-    .page-template-page-agegate .container.nona-age-gate .landing-panel.krone .logo {
-      right: 16%;
-      left: inherit;
-      margin-right: -130px;
-      margin-right: -9.2857142857rem; } }
-@media (min-width: 767px) {
-  .page-template-page-agegate .container.nona-age-gate .landing-panel.tjg {
-    background-image: url("../img/ara-tjg-agegate.jpg"); } }
-.page-template-page-agegate .container.nona-age-gate .landing-panel.tjg .logo {
-  top: inherit;
-  bottom: 9%;
-  background-image: url("../img/tjg-logo-white-trans-icon.svg"); }
-  @media (max-height: 320px) {
-    .page-template-page-agegate .container.nona-age-gate .landing-panel.tjg .logo {
-      margin-top: 27%; } }
-  @media (min-width: 767px) {
-    .page-template-page-agegate .container.nona-age-gate .landing-panel.tjg .logo {
-      top: 24%;
-      bottom: inherit; } }
-  @media (min-width: 767px) and (max-width: 1023px) {
-    .page-template-page-agegate .container.nona-age-gate .landing-panel.tjg .logo {
-      left: 16%;
-      margin-left: -130px;
-      margin-left: -9.2857142857rem; } }
-
 .agegate-wrap {
   display: none;
   position: absolute;
@@ -116,13 +62,15 @@
   line-height: 26px;
   background: white;
   color: #c4a364;
+  text-decoration: none;
   min-width: 100%;
   padding: 5px;
   padding: 0.3571428571rem;
   margin-top: 11.5px;
   margin-top: 0.8214285714rem; }
   #nona_verify:hover {
-    text-decoration: none; }
+    text-decoration: none;
+    cursor: pointer; }
 
 #nona-overlay-wrap.nona-age-gate-hide {
   display: none; }
