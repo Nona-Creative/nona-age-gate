@@ -71,81 +71,11 @@ $lightgrey        : #f1f1f2;
 $medgoldA         : rgba(159, 133, 81, 0.75);
 $subscribeGoldA   : rgba(159, 133, 81, 0.40);
 
-.agegate-wrap {
-	display: none;
-	position: absolute;
-	top: 47%;
-	left: 50%;
-	background: #fff;
-	border: 1px solid $gold;
-	color: $gold;
-	text-align: center;
-	z-index: 2;
-	@include krem('width',230px);
-	@include krem('margin-left',-115px);
-	@include krem('margin-top',-130px);
-	@include krem('padding-left',20px);
-	@include krem('padding-right',20px);
-	@include breakpoint($tablet) {
-		top: 40%;
-	}
-	h3{
-		@include ksuffix(0.25, true);
-	}
-}
-#agegate-form {
-	.mbsc-mobiscroll{
-		.dwwb{
-			background: #fff;
-			span{
-				display: block;
-			}
-		}
-		.dwwol {
-		    border: none;
-		}
-		.dwwr{
-			@include fontfamily2();
-		}
-		.dw-sel .dw-i{
-			color: $darkgold;
-			font-size: 1.35em;
-		}
-		.dwwc > .dwfl{
-			border-left: none;
-		}
-		i{
-			color: $gold;
-			@include krem('font-size',40px);
-
-		}
-	}
-}
-#nona_verify {
-	border: 1px solid;
-	display: block;
-    font-size: 1.3125rem;
-    line-height: 26px;
-    background: white;
-	color: $gold;
-	text-decoration: none;
-	min-width: 100%;
-	@include krem('padding',5px);
-	@include kprefix(0.5, true);
-	&:hover{
-		text-decoration: none;
-		cursor: pointer;
-	}
-
-}
 
 #nona-overlay-wrap {
 	&.nona-age-gate-hide {
 		display: none;
 	}
-}
-
-#nona-overlay-wrap {
 	position: fixed;
 	height: 100%;
 	width: 100%;
@@ -223,6 +153,87 @@ $subscribeGoldA   : rgba(159, 133, 81, 0.40);
 							left: 16%;
 							@include krem ('margin-left', -130px );
 						}
+					}
+				}
+			}
+			a {
+				&#nona_verify {
+					border: 1px solid;
+					display: block;
+				    font-size: 1.3125rem;
+				    line-height: 26px;
+				    background: white;
+					color: $gold;
+					text-decoration: none;
+					min-width: 100%;
+					@include krem('padding',5px);
+					@include kprefix(0.5, true);
+					&:hover{
+						text-decoration: none;
+						cursor: pointer;
+					}
+				}
+			}
+
+			.agegate-wrap {
+				display: none;
+				position: absolute;
+				top: 47%;
+				left: 50%;
+				background: #fff;
+				border: 1px solid $gold;
+				color: $gold;
+				text-align: center;
+				z-index: 2;
+				font-family: 'Cinzel', serif !important;
+			    font-weight: 400;
+				@include krem('width',230px);
+				@include krem('margin-left',-115px);
+				@include krem('margin-top',-130px);
+				@include krem('padding-left',20px);
+				@include krem('padding-right',20px);
+				@include breakpoint($tablet) {
+					top: 40%;
+				}
+				.agegate {
+					#agegate-form {
+						.mbsc-mobiscroll{
+							.dwwb{
+								background: #fff;
+								span {
+									display: block;
+								}
+							}
+							.dwwol {
+							    border: none;
+							}
+							.dwwr{
+								@include fontfamily2();
+							}
+							.dw-sel .dw-i {
+								color: $darkgold;
+								font-size: 1.35em;
+							}
+							.dwwc > .dwfl {
+								border-left: none;
+							}
+							i{
+								color: $gold;
+								@include krem('font-size',40px);
+
+							}
+						}
+					}
+				}
+
+				#error-too-young {
+					display: none;
+					color: #BC2F3C;
+					p {
+						margin-bottom: 0;
+						margin-top: 5px;
+						padding: 5px;
+						border: 1px solid;
 					}
 				}
 			}

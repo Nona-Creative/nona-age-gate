@@ -158,8 +158,8 @@ class Nona_Age_Gate {
 	 * @return  void
 	 */
 	public function enqueue_scripts () {
-		wp_register_script( $this->_token . '-frontend', esc_url( $this->assets_url ) . 'js/frontend' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
-		wp_enqueue_script( $this->_token . '-frontend' );
+		wp_register_script( $this->_token . '-frontgate', esc_url( $this->assets_url ) . 'js/frontgate' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
+		wp_enqueue_script( $this->_token . '-frontgate' );
 
 		wp_register_script( $this->_token . '-cookie', esc_url( $this->assets_url ) . 'js/cookie' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-cookie' );
@@ -170,7 +170,7 @@ class Nona_Age_Gate {
 		    'age_to_restrict'		=> get_option('nona_age_to_restrict'),
 		    'time_to_remember'		=> get_option('nona_time_to_remember')
 		);
-		wp_localize_script( $this->_token . '-frontend', 'nona', $nona_localized_data );
+		wp_localize_script( $this->_token . '-frontgate', 'nonagate', $nona_localized_data );
 
 	} // End enqueue_scripts ()
 

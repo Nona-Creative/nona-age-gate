@@ -9,72 +9,6 @@
 /*
   Colors
 */
-.agegate-wrap {
-  display: none;
-  position: absolute;
-  top: 47%;
-  left: 50%;
-  background: #fff;
-  border: 1px solid #c4a364;
-  color: #c4a364;
-  text-align: center;
-  z-index: 2;
-  width: 230px;
-  width: 16.4285714286rem;
-  margin-left: -115px;
-  margin-left: -8.2142857143rem;
-  margin-top: -130px;
-  margin-top: -9.2857142857rem;
-  padding-left: 20px;
-  padding-left: 1.4285714286rem;
-  padding-right: 20px;
-  padding-right: 1.4285714286rem; }
-  @media (min-width: 767px) {
-    .agegate-wrap {
-      top: 40%; } }
-  .agegate-wrap h3 {
-    margin-bottom: 5.75px;
-    margin-bottom: 0.4107142857rem; }
-
-#agegate-form .mbsc-mobiscroll .dwwb {
-  background: #fff; }
-  #agegate-form .mbsc-mobiscroll .dwwb span {
-    display: block; }
-#agegate-form .mbsc-mobiscroll .dwwol {
-  border: none; }
-#agegate-form .mbsc-mobiscroll .dwwr {
-  font-family: 'Cinzel', serif !important;
-  font-weight: 400; }
-#agegate-form .mbsc-mobiscroll .dw-sel .dw-i {
-  color: #8d7d55;
-  font-size: 1.35em; }
-#agegate-form .mbsc-mobiscroll .dwwc > .dwfl {
-  border-left: none; }
-#agegate-form .mbsc-mobiscroll i {
-  color: #c4a364;
-  font-size: 40px;
-  font-size: 2.8571428571rem; }
-
-#nona_verify {
-  border: 1px solid;
-  display: block;
-  font-size: 1.3125rem;
-  line-height: 26px;
-  background: white;
-  color: #c4a364;
-  text-decoration: none;
-  min-width: 100%;
-  padding: 5px;
-  padding: 0.3571428571rem;
-  margin-top: 11.5px;
-  margin-top: 0.8214285714rem; }
-  #nona_verify:hover {
-    text-decoration: none;
-    cursor: pointer; }
-
-#nona-overlay-wrap.nona-age-gate-hide {
-  display: none; }
-
 #nona-overlay-wrap {
   position: fixed;
   height: 100%;
@@ -85,6 +19,8 @@
   top: 0;
   left: 0;
   overflow-y: scroll; }
+  #nona-overlay-wrap.nona-age-gate-hide {
+    display: none; }
   @media (min-width: 0) and (max-width: 766px) {
     #nona-overlay-wrap {
       background-image: url("../img/ara-mob-tjg-agegate.jpg"); } }
@@ -142,3 +78,70 @@
             left: 16%;
             margin-left: -130px;
             margin-left: -9.2857142857rem; } }
+      #nona-overlay-wrap #nona-overlay-inner #nona-overlay a#nona_verify {
+        border: 1px solid;
+        display: block;
+        font-size: 1.3125rem;
+        line-height: 26px;
+        background: white;
+        color: #c4a364;
+        text-decoration: none;
+        min-width: 100%;
+        padding: 5px;
+        padding: 0.3571428571rem;
+        margin-top: 11.5px;
+        margin-top: 0.8214285714rem; }
+        #nona-overlay-wrap #nona-overlay-inner #nona-overlay a#nona_verify:hover {
+          text-decoration: none;
+          cursor: pointer; }
+      #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap {
+        display: none;
+        position: absolute;
+        top: 47%;
+        left: 50%;
+        background: #fff;
+        border: 1px solid #c4a364;
+        color: #c4a364;
+        text-align: center;
+        z-index: 2;
+        font-family: 'Cinzel', serif !important;
+        font-weight: 400;
+        width: 230px;
+        width: 16.4285714286rem;
+        margin-left: -115px;
+        margin-left: -8.2142857143rem;
+        margin-top: -130px;
+        margin-top: -9.2857142857rem;
+        padding-left: 20px;
+        padding-left: 1.4285714286rem;
+        padding-right: 20px;
+        padding-right: 1.4285714286rem; }
+        @media (min-width: 767px) {
+          #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap {
+            top: 40%; } }
+        #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap .agegate #agegate-form .mbsc-mobiscroll .dwwb {
+          background: #fff; }
+          #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap .agegate #agegate-form .mbsc-mobiscroll .dwwb span {
+            display: block; }
+        #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap .agegate #agegate-form .mbsc-mobiscroll .dwwol {
+          border: none; }
+        #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap .agegate #agegate-form .mbsc-mobiscroll .dwwr {
+          font-family: 'Cinzel', serif !important;
+          font-weight: 400; }
+        #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap .agegate #agegate-form .mbsc-mobiscroll .dw-sel .dw-i {
+          color: #8d7d55;
+          font-size: 1.35em; }
+        #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap .agegate #agegate-form .mbsc-mobiscroll .dwwc > .dwfl {
+          border-left: none; }
+        #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap .agegate #agegate-form .mbsc-mobiscroll i {
+          color: #c4a364;
+          font-size: 40px;
+          font-size: 2.8571428571rem; }
+        #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap #error-too-young {
+          display: none;
+          color: #BC2F3C; }
+          #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap #error-too-young p {
+            margin-bottom: 0;
+            margin-top: 5px;
+            padding: 5px;
+            border: 1px solid; }

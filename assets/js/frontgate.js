@@ -1,0 +1,82 @@
+jQuery(document).ready( function ($) {
+
+	var time_to_remember = parseInt(nonagate.time_to_remember);
+	function initialize_age_gate() {
+		$(".container").addClass('nona-age-gate');
+		$("#nona-overlay-wrap").removeClass('nona-age-gate-hide').addClass('nona-age-gate-show');
+
+
+		$('#agegate-form').mobiscroll().date({
+			theme: 'default',
+			display: 'inline',
+			startYear: 1900,
+			endYear: 2020,
+			dateOrder: "ddMyy",
+			defaultValue: new Date("1991/02/08"),
+			rows: 5,
+			mode: "mixed",
+			height: "30"
+		});
+
+		jQuery("#agegate-wrap").fadeIn();
+
+		$("#nona_verify").on("click", function(e) {
+		e.preventDefault();
+
+			var old_enough = false;
+
+			if (is_visitor_old_enough()) {
+				old_enough = true;
+			}
+
+			if (old_enough) {
+			   cookie.set( 'nona-age-verified', 'verified', {
+				   expires: time_to_remember,
+				   domain: document.location.hostname,
+				   path: '/',
+				   secure: false
+				});
+
+				$("#nona-overlay-wrap").fadeOut("slow");
+
+			} else {
+				$("#error-too-young").slideDown().delay(3000).slideUp("slow");
+			}
+
+		});
+
+	}
+
+	function is_visitor_old_enough() {
+
+			var instance, values, day, month, year, today, birthDate, age, m;
+
+			instance = $('#agegate-form').mobiscroll('getInst');
+			values = instance.getValue();
+
+			day   = values[0]; //day
+			month = parseInt(values[1])+1; //caters for months (starting at Jan as index 0)
+			year  = values[2]; //year
+
+			today = new Date(); //existing JS function
+			birthDate = new Date(year + "/" + month + "/" + day);
+			age = today.getFullYear() - birthDate.getFullYear();
+			m = today.getMonth() - birthDate.getMonth();
+
+			if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
+				age--;
+			}
+
+			return (age >= nonagate.age_to_restrict); //returns boolean
+	}
+
+		// INIT AGE GATE
+	if( ! cookie.get('nona-age-verified') ) {
+		initialize_age_gate();
+	}
+
+});
+
+
+
+
