@@ -30,15 +30,10 @@
 					<div id="agegate-form">
 					</div>
 				</div>
-				<div class="tjgcustom-fields">
-				<input type="hidden" name="nona_verify_d_hidden" id="nona_verify_d_hidden" value="" />
-				<input type="hidden" name="nona_verify_m_hidden" id="nona_verify_m_hidden" value="" />
-				<input type="hidden" name="nona_verify_y_hidden" id="nona_verify_y_hidden" value="" />
-				</div>
 
-					<a id="nona_verify" href="#">'. esc_attr( $submit_button_label ) .'</a>
-					<div id="error-too-young"><p>Sorry! You\'re under '. get_option('nona_age_to_restrict') .'.</p></div>
-					<small>You must be over 18 to Enter</small>
+				<a id="nona_verify" href="#">'. esc_attr( $submit_button_label ) .'</a>
+				<div id="error-too-young"><p>Sorry! You\'re under '. esc_attr( get_option('nona_age_to_restrict') ).'.</p></div>
+				<small>You must be over 18 to Enter</small>
 
 			</div>';
 		$form .= '</form>';
