@@ -158,6 +158,18 @@ class Nona_Age_Gate {
 	 * @return  void
 	 */
 	public function enqueue_scripts () {
+		wp_register_script( $this->_token . '-mobiscroll-core', esc_url( $this->assets_url ) . 'js/mobiscroll/mobiscroll.core.min.js', array( 'jquery' ), $this->_version );
+		wp_enqueue_script( $this->_token . '-mobiscroll-core' );
+
+		wp_register_script( $this->_token . '-mobiscroll-datetime', esc_url( $this->assets_url ) . 'js/mobiscroll/mobiscroll.datetime.min.js', array( 'jquery' ), $this->_version );
+		wp_enqueue_script( $this->_token . '-mobiscroll-datetime' );
+
+		wp_register_script( $this->_token . '-mobiscroll-widget', esc_url( $this->assets_url ) . 'js/mobiscroll/mobiscroll.widget.min.js', array( 'jquery' ), $this->_version );
+		wp_enqueue_script( $this->_token . '-mobiscroll-widget' );
+
+		wp_register_script( $this->_token . '-mobiscroll-scroller', esc_url( $this->assets_url ) . 'js/mobiscroll/mobiscroll.scroller.min.js', array( 'jquery' ), $this->_version );
+		wp_enqueue_script( $this->_token . '-mobiscroll-scroller' );
+
 		wp_register_script( $this->_token . '-frontgate', esc_url( $this->assets_url ) . 'js/frontgate' . $this->script_suffix . '.js', array( 'jquery' ), $this->_version );
 		wp_enqueue_script( $this->_token . '-frontgate' );
 

@@ -2,8 +2,7 @@ jQuery(document).ready( function ($) {
 
 	var time_to_remember = parseInt(nonagate.time_to_remember);
 	function initialize_age_gate() {
-		$(".container").addClass('nona-age-gate');
-		$("#nona-overlay-wrap").removeClass('nona-age-gate-hide').addClass('nona-age-gate-show');
+		//$(".container").addClass('nona-age-gate');
 
 
 		$('#agegate-form').mobiscroll().date({
@@ -18,14 +17,15 @@ jQuery(document).ready( function ($) {
 			height: "30"
 		});
 
-		jQuery("#agegate-wrap").fadeIn();
+		$("#agegate-wrap").fadeIn(500);
+		$("#nona-overlay-wrap").fadeIn(500);
 
 		$("#nona_verify").on("click", function(e) {
 		e.preventDefault();
 
 			var old_enough = false;
 
-			if (is_visitor_old_enough()) {
+			if ( is_visitor_old_enough() ) {
 				old_enough = true;
 			}
 
@@ -49,16 +49,16 @@ jQuery(document).ready( function ($) {
 
 	function is_visitor_old_enough() {
 
-			var instance, values, day, month, year, today, birthDate, age, m;
+			var ageData, values, day, month, year, today, birthDate, age, m;
 
-			instance = $('#agegate-form').mobiscroll('getInst');
-			values = instance.getValue();
+			ageData = $('#agegate-form').mobiscroll('getInst');
+			values = ageData.getValue();
 
-			day   = values[0]; //day
-			month = parseInt(values[1])+1; //caters for months (starting at Jan as index 0)
-			year  = values[2]; //year
+			day   = values[0]; // day
+			month = parseInt( values[1] ) +1; // caters for months (starting at Jan as index 0)
+			year  = values[2]; // year
 
-			today = new Date(); //existing JS function
+			today = new Date(); // existing JS function
 			birthDate = new Date(year + "/" + month + "/" + day);
 			age = today.getFullYear() - birthDate.getFullYear();
 			m = today.getMonth() - birthDate.getMonth();

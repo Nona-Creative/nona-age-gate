@@ -15,20 +15,18 @@
   width: 100%;
   background: #fff;
   z-index: 10000;
-  display: block;
+  display: none;
   top: 0;
   left: 0;
   overflow-y: scroll; }
-  #nona-overlay-wrap.nona-age-gate-hide {
-    display: none; }
   @media (min-width: 0) and (max-width: 766px) {
     #nona-overlay-wrap {
       background-image: url("../img/ara-mob-tjg-agegate.jpg"); } }
   #nona-overlay-wrap:before {
     content: '';
     position: absolute;
-    top: 0px;
-    left: 0px;
+    top: 0;
+    left: 0;
     width: 100%;
     height: 100%;
     opacity: 0;
