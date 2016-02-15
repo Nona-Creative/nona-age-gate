@@ -28,238 +28,170 @@ $big : 1440px !default;
 $toBig : 1440px !default;
 $fromBig : 1440px !default;
 
-/* Custom Font Stacks */
-// Adding !important: http://www.wastedpotential.com/solved-google-web-fonts-not-displaying-on-some-macs/
-@mixin fontfamily1 {
-	//Krone text
-	font-family: 'Source Sans Pro', sans-serif !important;
-	font-weight: 400;
-}
-@mixin fontfamily2 {
-	// Krone headings
-	font-family: 'Cinzel', serif !important;
-	font-weight: 400;
-}
-@mixin fontfamily3 {
-	// TJG text + headings
-	font-family: 'Tinos', serif !important;
-	font-weight: 400;
-}
-@mixin iconfont {
-	display: inline-block;
-	font: normal normal normal 14px/1 FontAwesome;
-	font-size: inherit;
-	text-rendering: auto;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	transform: translate(0, 0);
-}
-/*
-  Colors
-*/
-// Note: Default styles are for Krone. TJG styles targeted by body class 'tjg'.
-
-// Krone colours
-$lightgold        : #a68b52;
-$gold             : #c4a364;
-$medgold          : #9f8551;
-$darkgold         : #8d7d55;
-$black            : #020201;
-$navy             : #1d2331; //27 35 49
-$grey             : #626366;
-$lightgrey        : #f1f1f2;
-$medgoldA         : rgba(159, 133, 81, 0.75);
-$subscribeGoldA   : rgba(159, 133, 81, 0.40);
-
-
-#nona-overlay-wrap {
-	position: fixed;
-	height: 100%;
-	width: 100%;
-	background: #fff;
-	z-index: 10000;
-	display: none;
-	top: 0;
-	left: 0;
-	overflow-y: scroll;
-
-		@include breakpoint(0 $toTablet) {
-			background-image: url('../img/ara-mob-tjg-agegate.jpg');
-		}
-
-		&:before{ //disallows clicking through
-			content:'';
-			position: absolute;
-			top: 0;
-			left: 0;
-			width: 100%;
-			height: 100%;
-			opacity: 0;
-			-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=0)";/*IE8*/
-			z-index: 1;
-		}
-
-
-		#nona-overlay-inner {
+body {
+	&.overlay-active {
+		overflow: hidden;
+	}
+	#nona-overlay-wrap {
+		position: fixed;
 		height: 100%;
 		width: 100%;
-		z-index: 2;
+		z-index: 10000;
+		display: none;
+		top: 0;
+		left: 0;
+		overflow-y: scroll;
+
+
+
+	#araFooter {
+		border-top: 1px solid #8B2331;
+	    padding: 5px 0px;
+	    text-align: center;
+	    bottom: 0px;
+	    left: 0px;
+	    width: 100%;
+	    background: #FFF none repeat scroll 0% 0%;
+	    z-index: 1;
+	    position: fixed;
+
+	    p {
+	    	margin: 0px;
+	    }
+
+	    a {
+	    	color: #151515;
+	    	text-decoration: none;
+			font-weight: 300;
+	    }
+	}
+
+	#nona-overlay-inner {
+		width: 28.5714285714%;
+
+    float: left;
+    float: none;
+    padding: 3% 3% 7%;
+		background: #8B2331;
+		border-left: 3px solid #DAB97A;
+		border-right: 3px solid #DAB97A;
+		color: #DAB97A;
+		font-family: "museo", serif;
+		height: 100%;
+		margin: 0 auto;
+		text-align: center;
+		position: relative;
+		z-index: 1;
+		@include breakpoint($fromMobile $toTablet) {
+			width: 80%;
+		}
+		.logo {
+		    max-width: 70%;
+		}
+
+		h1 {
+
+			&.title {
+				font-size: 1.6666666667rem;
+				    line-height: 2.1666666667rem;
+						margin-top: 0rem;
+						    margin-bottom: 1.5rem;
+			}
+			&.sub-title {
+
+			}
+
+		}
 
 		#nona-overlay {
-			display: flex;
-			flex-flow: column;
-			height: 100%;
 
-			.landing-panel {
-				.logo {
-					top: 9%;
-					@include breakpoint($tablet) {
-						top: 24%;
-					}
-				}
-				&.krone{
-					background-image: url('../img/ara-mob-krone-agegate.jpg');
-					@include breakpoint($tablet) {
-						background-image: url('../img/ara-krone-agegate.jpg');
-					}
-					.logo{
-						@include breakpoint($fromTablet $toDesktop) {
-							right: 16%;
-							left: inherit;
-							@include krem ('margin-right', -130px );
-						}
-					}
-				}
-				&.tjg{
-
-					@include breakpoint($tablet) {
-						background-image: url('../img/ara-tjg-agegate.jpg');
-					}
-					.logo{
-						top: inherit;
-						bottom: 9%;
-						background-image: url('../img/tjg-logo-white-trans-icon.svg');
-						@include breakpoint((max-height 320px )){
-							margin-top: 27%;
-						}
-						@include breakpoint($tablet) {
-							top: 24%;
-							bottom: inherit;
-						}
-						@include breakpoint($fromTablet $toDesktop) {
-							left: 16%;
-							@include krem ('margin-left', -130px );
-						}
-					}
-				}
+			h2 {
+				font-size: 1rem;
+				line-height: 1.5rem;
+				width: 80%;
+				margin-left: 10%;
+				margin-right: 10%;
 			}
-			a {
-				&#nona_verify {
-					border: 1px solid $gold;
-					color: $gold;
 
-					display: block;
-				    font-size: 1.3125rem;
-				    line-height: 26px;
-					text-decoration: none;
-					min-width: 100%;
-					outline: none;
+			p {
+				font-size: 1.6666666667rem;
+		    line-height: 2.3333333333rem;
+			}
+
+			form {
+				width: 80%;
+		    margin: 0 auto;
+		    display: block;
+				.submit {
 					position: relative;
-					-webkit-transition: all 0.3s;
-					-moz-transition: all 0.3s;
-					transition: all 0.3s;
-					@include krem('padding',5px);
-					@include kprefix(0.5, true);
-
 					&:after {
-						content: '';
-						position: absolute;
-						z-index: -1;
-						-webkit-transition: all 0.3s;
-						-moz-transition: all 0.3s;
-						transition: all 0.3s;
-
-						width: 0%;
-						height: 100%;
-						top: 0;
-						left: 0;
-						background: $gold;
+					    content: '';
+					    position: absolute;
+					    width: 10px;
+					    width: 0.8333333333rem;
+					    height: 20px;
+					    height: 1.6666666667rem;
+					    background-image: url('../img/arrow-sprite.png');
+					    background-position: 0 -25px;
+					    background-repeat: no-repeat;
+					    bottom: 7px;
 					}
-
-					&:hover, &:active{
-						text-decoration: none;
+					.button {
+						color: #DAB97A;
+				    margin-top: 18px;
 						cursor: pointer;
-						color: #fff;
-						// background: $gold;
-						&:after {
-							width: 100%;
-						}
 					}
 				}
 			}
+			input[type=submit] {
+					color: white;
+			}
+			.submit {
+				margin-bottom: 0;
+			}
+			input {
+					&#nona_verify_confirm {
+						display: inline-block;
+				}
+			}
+			.date-inputs {
+				border: 5px solid rgba(218,185,122,0.35);
+		    display: block;
+		    overflow: hidden;
+				.mm,
+				.dd {
+					    width: 30%;
+							float: left;
+    overflow: hidden;
+				}
+				.yy {
+					width: 40%;
+					border-right: 2px solid #DAB97A;
+					float: left;
+					overflow: hidden;
+				}
 
-			.agegate-wrap {
+				input[type=text] {
+					border: 2px solid #DAB97A;
+					border-right: none;
+					text-align: center;
+					font-family: "museo", serif;
+					margin: 0;
+					opacity: 1;
+					color: rgba(15,15,15,0.8);
+				}
+
+			}
+			#error-too-young {
 				display: none;
-				position: absolute;
-				top: 47%;
-				left: 50%;
-				background: #fff;
-				border: 1px solid $gold;
-				color: $gold;
-				text-align: center;
-				z-index: 2;
-				font-family: 'Cinzel', serif !important;
-			    font-weight: 400;
-				@include krem('width',230px);
-				@include krem('margin-left',-115px);
-				@include krem('margin-top',-130px);
-				@include krem('padding-left',20px);
-				@include krem('padding-right',20px);
-				@include breakpoint($tablet) {
-					top: 40%;
-				}
-				.agegate {
-					#agegate-form {
-						.mbsc-mobiscroll{
-							.dwwb{
-								background: #fff;
-								span {
-									display: block;
-								}
-							}
-							.dwwol {
-							    border: none;
-							}
-							.dwwr{
-								@include fontfamily2();
-							}
-							.dw-sel .dw-i {
-								color: $darkgold;
-								font-size: 1.35em;
-							}
-							.dwwc > .dwfl {
-								border-left: none;
-							}
-							i{
-								color: $gold;
-								@include krem('font-size',40px);
-
-							}
-						}
-					}
-				}
-
-				#error-too-young {
-					display: none;
-					color: #BC2F3C;
-					p {
-						margin-bottom: 0;
-						margin-top: 5px;
-						padding: 5px;
-						border: 1px solid;
-					}
-				}
+				padding: 12px;
+				background-color: #ffebe8;
+				border: 1px solid #c00;
+				-webkit-border-radius: 3px;
+				   -moz-border-radius: 3px;
+				        border-radius: 3px;
 			}
 		}
 	}
+}
 }

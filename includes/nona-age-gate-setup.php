@@ -12,20 +12,30 @@ function enqueue_styles () {
 } // End enqueue_styles ()
 
 add_action( 'wp_enqueue_scripts','enqueue_scripts', 10 );
+
 function enqueue_scripts () {
 	global $_token, $assets_url, $_version, $script_suffix;
 
 	wp_register_script( $_token . '-frontgate', esc_url( $assets_url ) . 'js/frontgate.js', array( 'jquery' ), $_version );
 	wp_enqueue_script( $_token . '-frontgate' );
 
+	wp_register_script( $_token . '-backstretch', esc_url( $assets_url ) . 'js/jquery.backstretch.min.js', array( 'jquery' ), $_version );
+	wp_enqueue_script( $_token . '-backstretch' );
+
+	wp_register_script( $_token . '-autotab', esc_url( $assets_url ) . 'js/jquery.autotab.min.js', array( 'jquery' ), $_version );
+	wp_enqueue_script( $_token . '-autotab' );
+
 	wp_register_script( $_token . '-cookie', esc_url( $assets_url ) . 'js/cookie.min.js', array( 'jquery' ), $_version );
 	wp_enqueue_script( $_token . '-cookie' );
 
 	// WordPress Localise Script for use in JS
 	$nona_localized_data = array(
-	    'ajaxurl'				=> admin_url( 'admin-ajax.php' )
+	    'ajaxurl'						=> admin_url( 'admin-ajax.php' ),
+			'bg_image'					=> get_nona_option('_nona_bg_image'),
+			'restrict_age'			=> get_nona_option('_nona_age'),
+			'time_to_remember'	=> get_nona_option('_nona_to_remember'),
 	);
-	wp_localize_script( $_token . '-frontgate', 'nonagate', $nona_localized_data );
+	wp_localize_script( $_token . '-frontgate', 'nona_block', $nona_localized_data );
 
 } // End enqueue_scripts ()
 
@@ -56,49 +66,55 @@ function verify_overlay() {
 	// Disable page caching by W3 Total Cache.
 	define( 'DONOTCACHEPAGE', true ); ?>
 
-		<div id="nona-overlay-wrap" class="nona-site-gate-hide">
+		<div id="nona-overlay-wrap">
 			<div id="nona-overlay-inner">
-				<div id="nona-overlay">
-					<div class="nona-overlay-logo"><img src="<?php echo $assets_url; ?>/img/gm-logo.png"></div>
-					<?php nona_verify_form(); ?>
-				</div>
+				<img class="logo" src="<?php echo get_nona_option('_nona_header_image') ?>">
+							<h1 class="title"><?php echo get_nona_option('_nona_title') ?></h1>
+							<h1 class="sub-title"></h1>
+
+							<div id="nona-overlay">
+								<h2>Robertson Winery supports responsible drinking. <br><br> This website is meant to be enjoyed by people of legal drinking age.</h2>
+
+								<p>Please provide your date of birth</p>
+								<?php nona_verify_form() ?>
+
+							</div>
+							<div id="araFooter">
+						        <p>
+						            <a href="http://www.ara.co.za/" target="_blank" rel="nofollow">
+						                <img src="<?php echo $assets_url; ?>/img/ara-logo.png" alt="Please Drink Responsibly" class="hide-on-mobile" height="55" width="80">
+										<?php echo get_nona_option('_nona_ara_text') ?>
+						                <img src="<?php echo $assets_url; ?>/img/ara_noUnderAge.gif" alt="No Under 18's Allowed" class="hide-on-mobile">
+						            </a>
+						        </p>
+						    </div>
 			</div>
 		</div>
-
-		<div id="sera-overlay">
-
-			<h2>Robertson Winery supports responsible drinking. <br>
-			<br> This website is meant to be enjoyed by people of legal drinking age.
-			</h2>
-
-			<p>Please provide your date of birth</p>
-
-		</div>
-
-
 	<?php
 }
 
 function nona_verify_form() {
 	?>
-	<form id="sera_verify_form" action="http://robertsonwinery.dev/" method="post">
+	<form id="nona_verify_form" action="http://robertsonwinery.dev/" method="post">
 
 		<div class="date-inputs">
 			<div class="dd">
-				<input type="text" name="sera_verify_d" id="sera_verify_d" maxlength="2" value="" placeholder="DD">
+				<input type="text" name="nona_verify_d" id="nona_verify_d" maxlength="2" value="" placeholder="DD">
 			</div>
 			<div class="mm">
-				<input type="text" name="sera_verify_m" id="sera_verify_m" maxlength="2" value="" placeholder="MM">
+				<input type="text" name="nona_verify_m" id="nona_verify_m" maxlength="2" value="" placeholder="MM">
 			</div>
 			<div class="yy">
-				<input type="text" name="sera_verify_y" id="sera_verify_y" maxlength="4" value="" placeholder="YYYY">
+				<input type="text" name="nona_verify_y" id="nona_verify_y" maxlength="4" value="" placeholder="YYYY">
+			</div>
+			<div id="error-too-young">
+				We're sorry. You're too young to access this site.
 			</div>
 		</div>
 		<p class="submit">
-			<input type="submit" class="button" name="sera_verify" id="sera_verify" value="Enter">
+			<input type="submit" class="button" name="nona_verify" id="nona_verify" value="<?php echo get_nona_option('_nona_button') ?>">
 		</p>
 
 	</form>
 	<?php
 }
-

@@ -29,6 +29,12 @@ class Nona_Admin {
 	private $metabox_id = 'nona_option_metabox';
 
 	/**
+	 * Options page prefix
+	 * @var string
+	 */
+	private $prefix = '_nona_';
+
+	/**
 	 * Options Page title
 	 * @var string
 	 */
@@ -141,20 +147,101 @@ class Nona_Admin {
 
 		// Set our CMB2 fields
 
+		/**
+		 * Age field.
+		 */
 		$cmb->add_field( array(
-			'name' => __( 'Test Text', 'nona' ),
-			'desc' => __( 'field description (optional)', 'nona' ),
-			'id'   => 'test_text',
-			'type' => 'text',
-			'default' => 'Default Text',
+			'name' => __( 'Age to Restrict', 'nona' ),
+			'desc' => __( 'years.', 'nona' ),
+			'id'   => $this->prefix . 'age',
+			'type' => 'text_small',
+			'default' => '18',
+			// 'repeatable' => true,
 		) );
 
 		$cmb->add_field( array(
-			'name'    => __( 'Test Color Picker', 'nona' ),
-			'desc'    => __( 'field description (optional)', 'nona' ),
-			'id'      => 'test_colorpicker',
+			'name' => __( 'Days to remember', 'nona' ),
+			'desc' => __( 'days.', 'nona' ),
+			'id'   => $this->prefix . 'to_remember',
+			'type' => 'text_small',
+			'default' => '7',
+			// 'repeatable' => true,
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Overlay Options', 'cmb2' ),
+			'desc' => __( 'Display options for the Site Block Overlay.', 'cmb2' ),
+			'id'   => $this->prefix . 'section_title_overlay',
+			'type' => 'title',
+		) );
+
+		$cmb->add_field( array(
+			'name'       => __( 'Title', 'nona' ),
+			'desc'       => __( 'Title for overlay', 'cmb2' ),
+			'id'         => $this->prefix . 'title',
+			'type'       => 'text',
+			'default' => 'Welcome',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Description', 'cmb2' ),
+			'desc'    => __( 'Describe the site and the reason for the site block.', 'cmb2' ),
+			'id'      => $this->prefix . 'description',
+			'type'    => 'wysiwyg',
+			'options' => array( 'textarea_rows' => 5, ),
+		) );
+
+		$cmb->add_field( array(
+			'name'       => __( 'Instruction', 'nona' ),
+			'desc'       => __( 'e.g. You need to be 18 years and older', 'cmb2' ),
+			'id'         => $this->prefix . 'instruction',
+			'type'       => 'text',
+			'default' => 'You need to be 18 years and older',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Button text', 'nona' ),
+			'desc' => __( 'e.g. Enter', 'nona' ),
+			'id'   => $this->prefix . 'button',
+			'type' => 'text_medium',
+			'default' => 'Enter',
+			// 'repeatable' => true,
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Header Image', 'cmb2' ),
+			'desc' => __( 'Upload header image or logo (optional)', 'cmb2' ),
+			'id'   => $this->prefix . 'header_image',
+			'type' => 'file',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'Background Image', 'cmb2' ),
+			'desc' => __( 'Upload background image (optional)', 'cmb2' ),
+			'id'   => $this->prefix . 'bg_image',
+			'type' => 'file',
+		) );
+
+		$cmb->add_field( array(
+			'name'    => __( 'Background color', 'nona' ),
+			'desc'    => __( 'for the section or background (optional)', 'nona' ),
+			'id'      => $this->prefix . 'background_color',
 			'type'    => 'colorpicker',
 			'default' => '#bada55',
+		) );
+
+		$cmb->add_field( array(
+			'name' => __( 'ARA Options', 'cmb2' ),
+			'desc' => __( 'Display options for the ARA notice overlay.', 'cmb2' ),
+			'id'   => $this->prefix . 'section_title_ara',
+			'type' => 'title',
+		) );
+
+		$cmb->add_field( array(
+			'name'       => __( 'ARA notice text', 'nona' ),
+			'desc'       => __( 'e.g. Not for sale to persons under the age of 18. Please Drink Responsibly.', 'cmb2' ),
+			'id'         => $this->prefix . 'ara_text',
+			'type'       => 'text',
 		) );
 
 	}
