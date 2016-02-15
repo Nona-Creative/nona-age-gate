@@ -19,28 +19,17 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
+$_version = '1.0.0';
+$_token = 'nona_site_gate';
+$dir = plugin_dir_path( __FILE__ );
+$assets_dir = $dir . 'assets';
+$assets_url = plugin_dir_url( __FILE__) . 'assets/';
+$script_suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 // Load plugin class files
-require_once( 'includes/class-nona-age-gate.php' );
-require_once( 'includes/class-nona-age-gate-settings.php' );
-
-// Load plugin libraries
-require_once( 'includes/lib/class-nona-age-gate-admin-api.php' );
+//
+require_once( 'includes/nona-age-gate-setup.php' );
+require_once( 'includes/options-page.php' );
 
 
-/**
- * Returns the main instance of Nona_Age_Gate to prevent the need to use globals.
- *
- * @since  1.0.0
- * @return object Nona_Age_Gate
- */
-function Nona_Age_Gate () {
-	$instance = Nona_Age_Gate::instance( __FILE__, '1.0.0' );
 
-	if ( is_null( $instance->settings ) ) {
-		$instance->settings = Nona_Age_Gate_Settings::instance( $instance );
-	}
-
-	return $instance;
-}
-
-Nona_Age_Gate();
