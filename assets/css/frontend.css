@@ -9,6 +9,7 @@
 /*
   Colors
 */
+
 #nona-overlay-wrap {
   position: fixed;
   height: 100%;
@@ -152,6 +153,7 @@
           border-left: none; }
         #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap .agegate #agegate-form .mbsc-mobiscroll i {
           color: #c4a364;
+          font-family: 'Font Awesome 5 Regular' !important;
           font-size: 40px;
           font-size: 2.8571428571rem; }
         #nona-overlay-wrap #nona-overlay-inner #nona-overlay .agegate-wrap #error-too-young {
